@@ -1,0 +1,128 @@
+{% extends 'base/base.html' %}
+
+{% load staticfiles %}
+{% block title %}
+Intermediario: {{  mi_usuario.0.nombres }}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div id="heading-breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<h1>Mi cuenta</h1>
+				</div>
+				<div class="col-md-5">
+					<ul class="breadcrumb">
+
+						<li><a href="/">Inicio</a>
+						</li>
+						<li>Mi cuenta</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="content" class="clearfix">
+
+		<div class="container">
+
+			<div class="row">
+
+				<!-- *** LEFT COLUMN ***
+		 _________________________________________________________ -->
+
+				<div class="col-md-9 clearfix" id="customer-account">
+
+					<p class="lead">Mi perfil : {{  mi_usuario.0.nombres }} {{  mi_usuario.0.apellidos }} </p>					
+					<!-- /.box -->
+					<div class="box clearfix">
+						<div class="heading">
+							<h3 class="text-uppercase">Perfil de Intermediario</h3>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="firstname">Nombres</label>
+								<h4>{{  mi_usuario.0.nombres }}</h4>
+							</div>
+							<div class="col-sm-6">
+									<label for="lastname">Apellidos</label>
+									<h4>{{  mi_usuario.0.apellidos }}</h4>
+							</div>
+						</div>
+						<!-- /.row -->
+						<div class="row">
+							<div class="col-sm-6">
+									<label for="company">Company</label>
+									<h4>{{ mi_usuario.0.fecha_nac}}</h4>
+									
+							</div>
+							<div class="col-sm-6">
+									<label for="street">Street</label>
+									<h4>{{ mi_usuario.0.idUsuario.email }}</h4>
+							</div>
+						</div>
+						<!-- /.row -->
+						<div class="row">
+							<div class="col-sm-6">
+									<label for="phone">Telephone</label>
+
+									<h4>{{ mi_usuario.0.telf }}</h4>
+							</div>
+							<div class="col-sm-6">
+									<label for="email_account">Email</label>
+									<h4>{{ mi_usuario.0.domicilio }}</h4>									
+							</div>
+						</div>				
+					</div>
+				</div>
+				<!-- /.col-md-9 -->
+
+				<!-- *** LEFT COLUMN END *** -->
+
+				<!-- *** RIGHT COLUMN ***
+		 _________________________________________________________ -->
+
+				<div class="col-md-3">
+					<!-- *** CUSTOMER MENU ***
+_________________________________________________________ -->
+					<div class="panel panel-default sidebar-menu">
+						<div class="panel-heading">
+							<h3 class="panel-title">Opciones</h3>
+						</div>
+
+						<div class="panel-body">
+
+							<ul class="nav nav-pills nav-stacked">
+								<li class="active"><a href="/intermediario/perfil"><i class="fa fa-briefcase"></i>Mi Perfil </a></li>
+								<li><a href="/tienda/404"><i class="fa fa-list"></i> Mis Proveedores</a></li>
+								<li><a href="/tienda/404"><i class="fa fa-star"></i>Mis Clientes </a></li>
+								<li><a href="/tienda/404"><i class="fa fa-user"></i>Buscar Clientes</a></li>
+								<li><a href="/tienda/404"><i class="fa fa-tags"></i>Enviar Promociones</a></li>
+								<li><a href="/registro/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- *** CUSTOMER MENU END *** -->
+				</div>
+				<!-- *** RIGHT COLUMN END *** -->
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#content -->
+
+
+
+
+
+
+{% endblock%}
+
+

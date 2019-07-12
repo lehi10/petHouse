@@ -1,0 +1,288 @@
+
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="robots" content="all,follow">
+		<meta name="googlebot" content="index,follow,snippet,archive">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>
+		{% block title %}
+			PetHouse
+		{% endblock %}
+		</title>
+
+		
+		<meta name="keywords" content="">
+
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+		<!-- Bootstrap and Font Awesome css -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+		<!-- Css animations  -->
+		<link href="{% static 'css/animate.css' %}" rel="stylesheet">
+		<link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+		<!-- Theme stylesheet, if possible do not edit this stylesheet -->
+		<link href="{% static 'css/style.default.css' %}" rel="stylesheet" id="theme-stylesheet">
+
+		<!-- Custom stylesheet - for your changes -->
+		<link href="{% static 'css/custom.css' %}" rel="stylesheet">
+
+		<!-- Responsivity for older IE -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+		<!-- Favicon and apple touch icons-->
+		<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}" />
+		<link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/apple-touch-icon-57x57.png' %}" />
+		<link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}" />
+		<link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-touch-icon-76x76.png' %}" />
+		<link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}" />
+		<link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/apple-touch-icon-120x120.png' %}" />
+		<link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/apple-touch-icon-144x144.png' %}" />
+		<link rel="apple-touch-icon" sizes="152x152" href="{% static 'img/apple-touch-icon-152x152.png' %}" />        
+    </head>
+
+{% block header %}
+
+	<body>
+		<header>	
+			<!-- *** TOP *** -->
+			<div id="top">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-5 contact">
+							<p class="hidden-sm hidden-xs">PetHouse.com</p>
+							<p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+							</p>
+						</div>
+						<div class="col-xs-7">
+							<div class="social">
+								<!--
+								<a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+								<a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+								<a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+								-->
+								<a href="/notificaciones" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+							</div>
+
+							{% if request.session.isLogin  %}
+								<div class="login">
+									Cuenta de {{ request.session.permisos }} <a href="/{{ request.session.permisos }}/perfil" > <i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">{{ request.session.usuario }}</span></a>
+									<a href="/registro/logout" onclick=" " ><i class="fa fa-sign-out"></i> <span class="hidden-xs text-uppercase">Cerrar Sesión</span></a>
+								</div>
+							{% else %}
+								<div class="login">
+									<a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Ingresar</span></a>
+									<a href="/registro"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Registrarse</span></a>
+								</div>
+							{% endif %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- *** TOP END *** -->
+			
+        <!-- *** LOGIN MODAL ***
+_________________________________________________________ -->
+
+		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="Login">Ingresar</h4>
+					</div>
+					<div class="modal-body">
+						<form action="/registro/login" method="post">
+								{% csrf_token %}
+							<div class="form-group">
+								<input type="text" name='username' class="form-control" id="email_modal" placeholder="usuario">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name='password' id="password_modal" placeholder="Contraseña">
+							</div>
+
+							<p class="text-center">
+								<button class="btn btn-template-main"><i class="fa fa-sign-in"></i> Ingresar</button>
+							</p>
+
+						</form>
+						<p class="text-center text-muted">¿Aún no tienes una cuenta ?</p>
+						<p class="text-center text-muted"><a href="/registro"><strong>Registrate Ahora</strong></a>! Es super facil, solo te tomará un par de minutos, y podrás acceder a descuentos, ofertas y promociones que no te puedes perder !</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- *** LOGIN MODAL END *** -->
+
+
+			<!-- *** NAVBAR *** -->
+
+			<div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+				<div class="navbar navbar-default yamm" role="navigation" id="navbar">
+					<div class="container">
+						<div class="navbar-header">
+							<a class="navbar-brand home" href="/">
+								<img src="{% static 'img/logo.png' %}" alt="Universal logo" class="hidden-xs hidden-sm">
+								<img src="{% static 'img/logo-small.png' %}" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">PetHouse - ir a Inicio</span>
+							</a>
+							<div class="navbar-buttons">
+								<button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+									<span class="sr-only">Toggle navigation</span>
+									<i class="fa fa-align-justify"></i>
+								</button>
+							</div>
+						</div>
+						<!--/.navbar-header -->
+						<div class="navbar-collapse collapse" id="navigation">
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown active">
+									<a href="/" >Inicio</a>
+								</li>
+								<li class="dropdown">
+									<a href="/?categoria=tienda" >Tienda de Mascotas</a>
+								</li>
+								
+								<li class="dropdown">
+									<a href="/?categoria=spa" >Spa</a>
+								</li>
+
+								<li class="dropdown">
+									<a href="/?categoria=veterinaria" >Veterinarias </a>
+								</li>
+								<li class="dropdown">
+									<a href="/tienda/contacto" >Contactanos </a>
+								</li>
+							</ul>
+
+						</div>
+						<!--/.nav-collapse -->
+
+
+
+						<div class="collapse clearfix" id="search">
+
+							<form class="navbar-form" role="search">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Search">
+									<span class="input-group-btn">
+
+					<button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+				</span>
+								</div>
+							</form>
+
+						</div>
+						<!--/.nav-collapse -->
+
+					</div>
+
+
+				</div>
+				<!-- /#navbar -->
+
+			</div>
+
+			<!-- *** NAVBAR END *** -->
+
+		</header>
+	{% endblock %}
+        	
+	{%block content %}        
+	<!-- contenido -->
+	{% endblock %}
+		
+	
+	{% if not request.session.isLogin  %}
+	<div id="get-it">
+			<div class="container">
+				<div class="col-md-8 col-sm-12">
+					<h3> ¿ Aún no tienes una cuenta ? ¡ Registrate ahora ! </h3>
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<a href="/registro" class="btn btn-template-transparent-primary">Registrarse</a>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	
+
+{% block footer %}
+			<!-- /#footer -->
+
+			<!-- *** FOOTER END *** -->
+
+			<!-- *** COPYRIGHT ***
+		-->
+
+			<div id="copyright">
+				<div class="container" >
+					<div class="col-md-12">
+						<p class="pull-left">&copy; 2019. PetHouse.com</p>
+						<p class="pull-right">Template by <a href="https://bootstrapious.com">Bootstrapious</a> & <a href="https://fity.cz">Fity.cz</a>
+								<!-- Not removing these links is part of the license conditions of the template. Thanks for understanding :) If you want to use the template without the attribution links, you can do so after supporting further themes development at https://bootstrapious.com/donate  -->
+						</p>
+
+					</div>
+				</div>
+			</div>
+			<!-- /#copyright -->
+
+			<!-- *** COPYRIGHT END *** -->
+		</div>
+		<!-- /#all -->
+
+
+		<!-- #### JAVASCRIPT FILES ### -->
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+		</script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+		<script src="{% static 'js/jquery.cookie.js' %}"></script>
+		<script src="{% static 'js/waypoints.min.js' %}"></script>
+		<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+		<script src="{% static 'js/jquery.parallax-1.1.3.js' %}"></script>
+		<script src="{% static 'js/front.js' %}"></script>
+
+        {% endblock %}
+        
+    
+    
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

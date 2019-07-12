@@ -1,0 +1,271 @@
+{% extends 'base/base.html' %}
+
+{% load staticfiles %}
+{% block title %}
+iSeller - Perfil
+{% endblock %}
+
+
+{% block content %}
+
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+=======
+>>>>>>> master
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Shopping cart</h1>
+            </div>
+            <div class="col-md-6">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li>Shopping cart</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-muted lead">You currently have 3 item(s) in your cart.</p>
+            </div>
+
+
+            <div class="col-md-9 clearfix" id="basket">
+
+                <div class="box">
+
+<<<<<<< HEAD
+                  <div class="container">
+		    <h1>Culqi Python Flask Example</h1>
+		    <a id="miBoton" class="btn btn-primary" href="#" >Pay</a>
+		    <br/><br/><br/>
+		    <div class="panel panel-default" id="response-panel">
+			<div class="panel-heading">Response</div>
+			<div class="panel-body" id="response">
+			</div>
+		    </div>
+		</div>
+=======
+             
+>>>>>>> master
+
+
+                </div>
+                <!-- /.box -->
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="box text-uppercase">
+                            <h3>You may also like these products</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="product">
+                            <div class="image">
+                                <a href="shop-detail.html">
+                                    <img src="{% static 'img/product2.jpg' %}" alt="" class="img-responsive image1">
+                                </a>
+                            </div>
+                            <div class="text">
+                                <h3><a href="shop-detail.html">Fur coat</a></h3>
+                                <p class="price">$143</p>
+
+                            </div>
+                        </div>
+                        <!-- /.product -->
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="product">
+                            <div class="image">
+                                <a href="shop-detail.html">
+                                    <img src="{% static 'img/product3.jpg' %}" alt="" class="img-responsive image1">
+                                </a>
+                            </div>
+                            <div class="text">
+                                <h3><a href="shop-detail.html">Fur coat</a></h3>
+                                <p class="price">$143</p>
+                            </div>
+                        </div>
+                        <!-- /.product -->
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="product">
+                            <div class="image">
+                                <a href="shop-detail.html">
+                                    <img src="{% static 'img/product1.jpg' %}" alt="" class="img-responsive image1">
+                                </a>
+                            </div>
+                            <div class="text">
+                                <h3><a href="shop-detail.html">Fur coat</a></h3>
+                                <p class="price">$143</p>
+                            </div>
+                        </div>
+                        <!-- /.product -->
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.col-md-9 -->
+
+            <div class="col-md-3">
+                <div class="box" id="order-summary">
+                    <div class="box-header">
+                        <h3>Order summary</h3>
+                    </div>
+                    <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Order subtotal</td>
+                                    <th>$446.00</th>
+                                </tr>
+                                <tr>
+                                    <td>Shipping and handling</td>
+                                    <th>$10.00</th>
+                                </tr>
+                                <tr>
+                                    <td>Tax</td>
+                                    <th>$0.00</th>
+                                </tr>
+                                <tr class="total">
+                                    <td>Total</td>
+                                    <th>$456.00</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+                <div class="box">
+                    <div class="box-header">
+                        <h4>Coupon code</h4>
+                    </div>
+                    <p class="text-muted">If you have a coupon code, please enter it in the box below.</p>
+                    <form>
+                        <div class="input-group">
+
+                            <input type="text" class="form-control">
+
+                            <span class="input-group-btn">
+
+                <button class="btn btn-template-main" type="button"><i class="fa fa-gift"></i></button>
+
+            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </form>
+                </div>
+
+            </div>
+            <!-- /.col-md-3 -->
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->
+
+
+<<<<<<< HEAD
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://checkout.culqi.com/plugins/v2"></script>
+<script type="text/javascript" src="{{url_for('static', filename='waitMe.min.js')}}"></script>
+
+<script>
+$("#response-panel").hide();
+Culqi.publicKey = 'pk_test_vzMuTHoueOMlgUPj';
+Culqi.settings({
+    title: 'iSeller',
+    currency: 'PEN',
+    description: 'Producto de Prueba iSeller',
+    amount: 3500
+});
+$('#miBoton').on('click', function (e) {
+    // Abre el formulario con las opciones de Culqi.configurar
+    Culqi.open();
+    e.preventDefault();
+});
+// Recibimos Token del Culqi.js
+function culqi() {
+  if (Culqi.token) {
+      $(document).ajaxStart(function(){
+        run_waitMe();
+      });
+      // Imprimir Token
+      $.ajax({
+         type: 'POST',
+         url: '/charges',
+         data: { token: Culqi.token.id, installments: Culqi.token.metadata.installments },
+         datatype: 'json',
+         success: function(data) {
+           var result = "";
+           if(data.constructor == String){
+               result = JSON.parse(data);
+           }
+           if(data.constructor == Object){
+               result = JSON.parse(JSON.stringify(data));
+           }
+           if(result.object === 'charge'){
+             resultdiv(result.outcome.user_message);
+           }
+           if(result.object === 'error'){
+               resultdiv(result.user_message);
+           }
+         },
+         error: function(error) {
+           resultdiv(error);
+         }
+      });
+  } else {
+    // Hubo un problema...
+    // Mostramos JSON de objeto error en consola
+    resultdiv(Culqi.error.user_message);
+  }
+};
+function run_waitMe(){
+  $('body').waitMe({
+    effect: 'orbit',
+    text: 'Procesando pago...',
+    bg: 'rgba(255,255,255,0.7)',
+    color:'#28d2c8'
+  });
+}
+function resultdiv(message){
+  $('#response-panel').show();
+  $('#response').html(message);
+  $('body').waitMe('hide');
+}
+</script>
+
+=======
+>>>>>>> master
+{% endblock%}
+
+

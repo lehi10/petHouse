@@ -1,0 +1,160 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Perfil Cliente : {{  mi_usuario.0.nombres }} 
+{% endblock %}
+
+{% block content %}
+<div id="heading-breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<h1>Mi Cuenta</h1>
+				</div>
+				<div class="col-md-5">
+					<ul class="breadcrumb">
+
+						<li><a href="index.html">Home</a>
+						</li>
+						<li>Mi cuenta</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="content" class="clearfix">
+
+		<div class="container">
+
+			<div class="row">
+
+				<!-- *** LEFT COLUMN ***
+		 _________________________________________________________ -->
+
+				<div class="col-md-9 clearfix" id="customer-account">
+
+					<p class="lead">Cliente : {{  mi_usuario.0.nombres }}  {{  mi_usuario.0.apellidos }} </p>					
+					<!-- /.box -->
+					{% block informacion %}
+					<div class="box clearfix" >
+						<div class="heading col-md-10">
+							<h3 class="text-uppercase">Mi Perfil</h3>
+						</div>
+
+						<div class="col-sm-2">
+							<a  style="margin-left: 20%" href="editarInf/{{mi_usuario.0.idPersona}}" class="btn btn-template-main" data-toggle="modal"><i 
+							 class="glyphicon glyphicon-edit"></i> Editar</a>
+						</div>
+						<!--ventana modal o emergente para actualizar informacio_-->
+						<!--div class="modal fade" id="formEditar">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h2 class="modal-title"> Actualizar  Información</h2>
+									</div>
+									<div class="modal-body">
+										 <form  method="POST" action=" ">
+                                            {% csrf_token %}
+                                            {{ form_editar.as_p}}          
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i> Publicar</button>
+                                        </div>
+                                    </form>
+
+									</div>
+								</div>
+							</div>
+						</div-->
+						<!--fin de ventana emergente-->
+
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="firstname">Nombres:</label><h4>{{  mi_usuario.0.nombres }}</h4>
+							</div>
+							<div class="col-sm-6">
+									<label for="lastname">Apellidos:</label>
+									<h4>{{  mi_usuario.0.apellidos }}</h4>
+							</div>
+						</div>
+						<!-- /.row -->
+						<div class="row">
+							<div class="col-sm-6">
+									<label for="company">Fecha de Nacimiento:</label>
+									<h4>{{ mi_usuario.0.fecha_nac}}</h4>
+									
+							</div>
+							<div class="col-sm-6">
+									<label for="street">Correo Electrónico:</label>
+									<h4>{{ mi_usuario.0.idUsuario.email }}</h4>
+							</div>
+						</div>
+						<!-- /.row -->
+						<div class="row">
+							<div class="col-sm-6">
+									<label for="phone">Teléfono:</label>
+
+									<h4>{{ mi_usuario.0.telf }}</h4>
+							</div>
+							<div class="col-sm-6">
+									<label for="email_account">Dirección:</label>
+									<h4>{{ mi_usuario.0.domicilio }}</h4>									
+							</div>
+						</div>				
+					</div>
+					{% endblock %}
+				</div>
+				<!-- /.col-md-9 -->
+
+				<!-- *** LEFT COLUMN END *** -->
+
+				<!-- *** RIGHT COLUMN ***
+		 _________________________________________________________ -->
+
+				<div class="col-md-3">
+					<!-- *** CUSTOMER MENU ***
+_________________________________________________________ -->
+					<div class="panel panel-default sidebar-menu" style=" border-left-color: #008B8B;">
+						<div class="panel-heading">
+							<h3 class="panel-title">Opciones</h3>
+						</div>
+
+						<div class="panel-body">
+							<ul class="nav nav-pills nav-stacked">
+								<li class="active"> 
+									<a href="/cliente/perfil"><i class="fa fa-user" ></i> Mi perfil</a>
+								</li>
+								<li>
+									<a href="/cliente/carrito"><i class="fa fa-shopping-cart"></i> Mi carrito de compras</a>
+								</li>
+								<li >
+									<a href="/cliente/pedidos"><i class="fa fa-tag"></i> Mis Pedidos</a>
+								</li>
+								<li>
+									<a href="/cliente/deseos"><i class="fa fa-heart"></i> Mi lista de deseos</a>
+								</li>
+
+								
+								<li>
+									<a href="/registro/logout"><i class="fa fa-sign-out"></i> Logout</a>
+								</li>
+							</ul>
+							
+						</div>
+					</div>
+					<!-- *** CUSTOMER MENU END *** -->
+				</div>
+				<!-- *** RIGHT COLUMN END *** -->
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#content -->
+
+{% endblock%}
+
+

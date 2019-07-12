@@ -1,0 +1,200 @@
+{% extends 'base/base.html' %}
+
+{% load staticfiles %}
+{% block title %}
+Perfil Proveedor: {{  mi_usuario.0.nombres }}
+{% endblock %}
+
+
+{% block content %}
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+
+<div id="heading-breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<h1>Mi Cuenta</h1>
+				</div>
+				<div class="col-md-5">
+					<ul class="breadcrumb">
+
+						<li><a href="index.html">Inicio</a>
+						</li>
+						<li>Mi cuenta</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+		<div class="container">
+			{% if error  %}
+			<div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						Su contraseña o su usuario son incorrectos.
+					</div>
+			
+			{% endif %}
+
+			<div class="row">
+				<div class="col-md-9">
+					<div class="box">
+							<h2 class="text-uppercase">Mis Requerimientos</h2>
+							
+					</div>
+						<!--===========PONER ESTILO ==========================-->
+					<div> 
+					
+
+						<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca por nombres..." title="Type in a name">
+
+						<table id="myTable">
+						  <tr class="header">
+						    <th style="width:30%;">Nombre</th>
+						    <th style="width:40%;">Descripcion</th>
+						    <th style="width:10%;">Cantidad</th>
+						    <th style="width: 20%;">Marca</th>
+						  </tr>
+						  {% if mis_requerimientos %}
+						  {%for item in mis_requerimientos%}
+						  	<tr>
+						    <td>{{item.nombre}}</td>
+						    <td>{{item.descripcion}}</td>
+						    <td>{{item.cantidad}}</td>
+						    <td>{{item.marca}}</td>
+						  </tr>
+						  {%endfor%}
+						  {% endif%}
+						  <!--
+						  <tr>
+						    <td>Alfreds Futterkiste</td>
+						    <td>Germany</td>
+						  </tr>
+						  <tr>
+						    <td>Berglunds snabbkop</td>
+						    <td>Sweden</td>
+						  </tr>
+						  <tr>
+						    <td>Island Trading</td>
+						    <td>UK</td>
+						  </tr>
+						  <tr>
+						    <td>Koniglich Essen</td>
+						    <td>Germany</td>
+						  </tr>
+						  <tr>
+						    <td>Laughing Bacchus Winecellars</td>
+						    <td>Canada</td>
+						  </tr>
+						  <tr>
+						    <td>Magazzini Alimentari Riuniti</td>
+						    <td>Italy</td>
+						  </tr>
+						  <tr>
+						    <td>North/South</td>
+						    <td>UK</td>
+						  </tr>
+						  <tr>
+						    <td>Paris specialites</td>
+						    <td>France</td>
+						  </tr>
+						  <tr>
+						    <td>Parisx specialites</td>
+						    <td>France</td>
+						  </tr>
+						  -->
+						</table>
+
+						<script>
+						function myFunction() {
+						  var input, filter, table, tr, td, i;
+						  input = document.getElementById("myInput");
+						  filter = input.value.toUpperCase();
+						  table = document.getElementById("myTable");
+						  tr = table.getElementsByTagName("tr");
+						  for (i = 0; i < tr.length; i++) {
+						    td = tr[i].getElementsByTagName("td")[0];
+						    if (td) {
+						      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						        tr[i].style.display = "";
+						      } else {
+						        tr[i].style.display = "none";
+						      }
+						    }       
+						  }
+						}
+						</script>
+						<br>
+					</div>
+						
+				</div>
+				<div class="col-md-3">
+					<!-- *** CUSTOMER MENU ***
+_________________________________________________________ -->
+					<div class="panel panel-default sidebar-menu">
+						<div class="panel-heading">
+							<h3 class="panel-title">Customer section</h3>
+						</div>
+
+						<div class="panel-body">
+
+							<ul class="nav nav-pills nav-stacked">
+								<li ><a href="/proveedor/perfil"><i class="fa fa-briefcase"></i> Mi perfil</a></li>
+								<li ><a href="/proveedor/regProducto"><i class="fa fa-edit"></i>Crear nuevo producto</a></li>
+								<li><a href="/tienda/404"><i class="fa fa-user"></i> Mis Intermediarios</a></li>
+								<li><a href="/proveedor/misproductos"><i class="fa fa-list-alt"></i>Mis productos</a></li>
+								<li class="active"><a href="/proveedor/requerimientos"><i class="fa fa-list-alt"></i>Mis requerimientos</a></li>
+								<li><a href="/tienda/404"><i class="fa fa-sign-out"></i> Logout</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- *** CUSTOMER MENU END *** -->
+				</div>
+
+
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#content -->
+
+{% endblock%}

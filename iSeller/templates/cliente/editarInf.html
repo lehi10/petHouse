@@ -1,0 +1,16 @@
+{% extends 'cliente/perfil.html' %}
+
+{%block informacion%}
+<div class="heading col-md-10">
+	<h3 class="text-uppercase">Mi Perfil</h3>
+</div>
+<div class="col-md-9" >
+	<form method="POST" accept=".">
+	 	{% csrf_token %}
+	 	{{ form_editar.as_p}}   
+	 	 <div class="text-center">
+          <button type="submit" class="btn btn-template-main">Guardar Datos</button>
+          </div>                                         
+	</form>                                        
+</div>
+{%endblock%}

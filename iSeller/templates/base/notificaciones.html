@@ -1,0 +1,69 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title %}
+iSeller - Una Nueva Forma de comprar
+{% endblock %}
+
+{% block content%}
+
+
+	<div id="heading-breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<h2>Tus notificaciones</h>
+				</div>
+				<div class="col-md-5">
+					<ul class="breadcrumb">
+						<li>Inicio/</a>						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	{% block javascript %}
+  <script>
+  function prueba(numero)
+  {
+  	console.log(numero);
+  }
+    
+  </script>
+{% endblock %}
+
+	<div id="content">
+		<div class="container">
+			{%if notifi%}
+			{%for x in notifi%}
+			<div class="row col-md-8 b-r" style="background: #F0F8FF;" onClick="prueba('{{x.mensaje}}');"> 
+			<!-- Modificar Esto <3 Karen-->
+				<div >
+				<a href="shop-category.html"><img src="{% static 'img/perfil.png' %}" 
+				class="col-md-2 padv-10" style="border-radius:200px;" > </a>
+				</div>
+				<div class="col-md-10" style="border-left: 1px solid grey;">
+
+				{%ifequal x.permisos_notificacion "cliente"%}
+				<strong>El usuario {{x.id_usuario}}</strong> a respondido a una petición:<br>
+				{%endifequal%}
+				{%ifequal x.permisos_notificacion "intermediario"%}
+				<strong>El usuario {{x.id_usuario}}</strong> a hecho un pedido:<br>
+				{%endifequal%}
+				<strong>Mensaje: </strong>{{x.mensaje}}<br>
+				<h5 style="color: #778899	">Hace aproximadamente 5h</h5><br>
+				</div>
+
+				
+			</div>
+			{%endfor%}
+			{%endif%}
+
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#content -->
+
+
+{%endblock%}
+

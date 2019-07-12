@@ -1,0 +1,151 @@
+{% extends 'base/base.html' %}
+
+{% load staticfiles %}
+{% block title %}
+Perfil Proveedor: {{  mi_usuario.0.nombres }}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div id="heading-breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<h1>Mi Cuenta</h1>
+				</div>
+				<div class="col-md-5">
+					<ul class="breadcrumb">
+
+						<li><a href="index.html">Inicio</a>
+						</li>
+						<li>Mi cuenta</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="content" class="clearfix">
+
+		<div class="container">
+
+			<div class="row">
+
+				<!-- *** LEFT COLUMN ***
+		 _________________________________________________________ -->
+
+				<div class="col-md-9 clearfix" id="customer-account">
+
+					<p class="lead">Mi perfil : {{  mi_usuario.0.nombres }} {{  mi_usuario.0.apellidos }}</p>					
+					<!-- /.box -->
+					<div class="box clearfix">
+						<div class="heading">
+							<h3 class="text-uppercase">Perfil de Proveedor </h3>
+						</div>
+
+						<h3>Información Empresa</h3>
+						<div class="row">
+							<div class="col-sm-6">
+									<label for="company">Razón Social</label>
+									<h4>{{mi_usuario.0.razonSocial}}</h4>
+									
+							</div>
+							<div class="col-sm-6">
+									<label for="street">RUC</label>
+									<h4>{{mi_usuario.0.ruc}}</h4>
+							</div>
+						</div>
+						<!-- /.row -->
+						
+
+						<div class="row">
+							<div class="col-sm-6">
+									<label for="phone">Telefono de contacto</label>
+
+									<h4>{{ mi_usuario.0.telf }}</h4>
+							</div>
+							<div class="col-sm-6">
+									<label for="email_account">Correo electronico</label>
+									<h4>{{ mi_usuario.0.idUsuario.email }}</h4>									
+							</div>
+						</div>		
+
+						<div class="row">
+							<div class="col-sm-6">
+									<label for="company">Domicilio</label>
+									<h4>{{mi_usuario.0.domicilio}}</h4>		
+							</div>
+							<div class="col-sm-6">
+									<label for="fecha-cuenta">Tipo de Productos</label>
+									<h4>{{  mi_usuario.0.categoria }}</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+									<label for="company">Información Adicional</label>
+									<h4>{{mi_usuario.0.info}}</h4>		
+							</div>
+						</div>
+						<!-- /.row -->
+
+						<hr>				
+						<h3>Información de Pagos</h3>
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="bank">Codigo Interbancario</label>
+								<h4>12345-6789-012-345 (dalta definir)</h4>
+							</div>
+							<div class="col-sm-6">
+								<label for="firstname">Cuenta a nombre de :</label>
+								<h4>{{  mi_usuario.0.encargado }}</h4>
+							</div>
+							
+						</div>						
+					</div>
+				</div>
+				<!-- /.col-md-9 -->
+
+				<!-- *** LEFT COLUMN END *** -->
+
+				<!-- *** RIGHT COLUMN ***
+		 _________________________________________________________ -->
+
+				<div class="col-md-3">
+					<!-- *** CUSTOMER MENU ***
+_________________________________________________________ -->
+					<div class="panel panel-default sidebar-menu">
+						<div class="panel-heading">
+							<h3 class="panel-title">Customer section</h3>
+						</div>
+
+						<div class="panel-body">
+
+							<ul class="nav nav-pills nav-stacked">
+								<li class="active"><a href="/proveedor/perfil"><i class="fa fa-briefcase"></i> Mi perfil</a></li>
+								<li><a href="/proveedor/regProducto"><i class="fa fa-edit"></i>Crear nuevo producto</a></li>
+								<li><a href="/proveedor/misproductos"><i class="fa fa-list-alt"></i>Mis productos</a></li>
+
+							</ul>
+						</div>
+					</div>
+					<!-- *** CUSTOMER MENU END *** -->
+				</div>
+				<!-- *** RIGHT COLUMN END *** -->
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#content -->
+
+
+
+
+
+
+{% endblock%}
+
+

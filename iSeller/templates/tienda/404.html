@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div id="content">
+    <div class="container">
+
+        <div class="col-sm-6 col-sm-offset-3" id="error-page">
+
+            <div class="box">
+
+                <p class="text-center">
+                    <a href="/">
+                        <img src="{% static 'img/logo.png' %}" alt="iSeller">
+                    </a>
+                </p>
+
+                <h3>Lo sentimos - Esta no es la pagina que buscas</h3>
+                <h4 class="text-muted">Error 404 - Page no encontrada</h4>
+
+                <p class="buttons"><a href="/" class="btn btn-template-main"><i class="fa fa-home"></i> Ir a inicio</a>
+                </p>
+            </div>
+
+        </div>
+        <!-- /.col-sm-6 -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->
+
+
+{% endblock %}
+
+
+
+
+
+
+
+   

@@ -1,0 +1,237 @@
+
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+
+
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>{{ detalles.0.nombre }}</h1>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="container">
+            {% block estadoListaDeseos %}
+                {%if estadoListaDeseos%}
+                    <div class="alert alert-success alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Agregado!</strong> {{ detalles.0.nombre }} fue agregado con exito a su lista de deseos.
+                    </div>
+                {%endif%}
+            {% endblock %}
+            
+
+        <div class="row">
+
+            <!-- *** LEFT COLUMN ***
+    _________________________________________________________ -->
+    {% if detalles.0.categoria == 'veterinaria'%}
+        <div class="col-md-9">
+                <div class="row" id="productMain">
+                    <div class="col-sm-4">
+                        <div id="mainImage">
+                            <img src="/media/{{ detalles.0.urlImagen }}" alt="" class="img-responsive">
+                        </div>
+                        <!-- /.ribbon -->
+                        <div class="box">
+                                <p class="price">S/. {{ detalles.0.precioBasico }}</p>
+                                <blockquote>    
+                                    
+                                    <p> {{ detalles.0.info }}</p>
+                                </blockquote>                            
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.435149874001!2d-71.5363959851371!3d-16.402711788675695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a57c9fb50e7%3A0x6c8d1f5e4df5167!2sCalle+Per%C3%BA%2C+Arequipa+04001!5e0!3m2!1ses!2spe!4v1559882721955!5m2!1ses!2spe" width="570" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    
+                        <div class="box" id="details">
+                    <p>
+                        <h4>Información Adicional</h4>
+                        
+                        <p>{{detalles.0.descripcion}}</p>
+                    </div>
+                        
+                    </div>
+
+                    
+                            <p class="text-center">
+                                <a href="/cliente/carrito?id={{ id }}&cant=1">
+                                    <button class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Reservar una Cita</button>
+                                </a>
+                            </p>
+                            
+                </div>
+
+
+                
+
+                <div class="box social" id="product-social">
+                    <h4>Show it to your friends</h4>
+                    <p>
+                        <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                    </p>
+                </div>
+
+            </div>
+    {%else%}
+    <div class="col-md-9">
+                
+                <div class="row" id="productMain">
+                    <div class="col-sm-6">
+                        <div id="mainImage">
+                            <img src="/media/{{ detalles.0.urlImagen }}" alt="" class="img-responsive">
+                        </div>
+                        <!-- /.ribbon -->
+                        <div class='box'>
+                            <div class="row" id="thumbs">
+                                    <div class="col-xs-4">
+                                        <a href="/media/{{ detalles.0.urlImagen }}" class="thumb">
+                                            <img src="/media/{{ detalles.0.urlImagen }}" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <a href="/media/{{ detalles.0.urlImagen }}" class="thumb">
+                                            <img src="/media/{{ detalles.0.urlImagen }}" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="box">
+                                <div class="text-center">
+                                    
+                                    <h3>{{detalles.0.nombre}}</h3>
+                                    <h4>{{detalles.0.marca}}</h4>
+                                </div>
+
+                                <p class="price">S/. {{ detalles.0.precioBasico }}</p>
+                                <blockquote>    
+                                    <h4>Stock: {{detalles.0.stock}} Unidades</h4>
+                                    <p> {{ detalles.0.info }}</p>
+                                </blockquote>
+                                <p class="text-center">
+                                    <a href="/cliente/carrito?id={{ id }}&cant=1">
+                                        <button class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Agregar al Carrito</button>
+                                    </a>
+                                </p>
+                            
+                            <div class="text-center">
+                                <a href="?id={{ id }}&ald=1">
+                                    <button  class="btn btn-default"   title="Enviar a la lista de Deseos"><i class="fa fa-heart-o"></i>Agregar a mi lista de Deseos</button>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="box" id="details">
+                    <p>
+                        <h4>Información Adicional</h4>
+                        <blockquote>
+                            <p><em>{{detalles.0.info}}</em>
+                            </p>
+                        </blockquote>
+                        <p>{{detalles.0.descripcion}}</p>
+                        <h4>Medidas</h4>
+                        <p>{{detalles.0.medidas}}</p>
+                </div>
+
+                <div class="box social" id="product-social">
+                    <h4>Show it to your friends</h4>
+                    <p>
+                        <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                    </p>
+                </div>
+
+            </div>
+    {%endif%}
+            
+            <!-- /.col-md-9 -->
+
+
+            <!-- *** LEFT COLUMN END *** -->
+
+            <!-- *** RIGHT COLUMN ***
+  _________________________________________________________ -->
+
+            <div class="col-sm-3">
+
+                <!-- *** MENUS AND FILTERS ***
+_________________________________________________________ -->
+                
+                <div class="panel panel-default sidebar-menu">
+
+						<div class="panel-heading">
+							<h3 class="panel-title">Categorias</h3>
+						</div>
+
+						<div class="panel-body">
+							<ul class="nav nav-pills nav-stacked category-menu">
+								<li>
+									<a href="/?categoria=spa">SPA<span class="badge pull-right"></span></a>
+								</li>
+							</ul>
+                            <ul class="nav nav-pills nav-stacked category-menu">
+								<li>
+									<a href="/?categoria=tienda">tiendas<span class="badge pull-right"></span></a>
+								</li>
+							</ul>
+                            <ul class="nav nav-pills nav-stacked category-menu">
+								<li>
+									<a href="/?categoria=veterinaria">veterinaria<span class="badge pull-right"></span></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+                
+
+                
+
+                <!-- *** MENUS AND FILTERS END *** -->
+                <div class="panel-heading">
+                    <h3 class="panel-title">Publicidad</h3>
+                </div>
+                <div class="banner">
+                    <a href="shop-category.html">
+                        <img src="{% static 'img/promo.jpg' %}" alt="sales 2014" class="img-responsive">
+                    </a>
+                </div>
+                <!-- /.banner -->
+            </div>
+            <!-- /.col-md-3 -->
+
+            <!-- *** RIGHT COLUMN END *** -->
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->
+
+
+
+
+
+
+{% endblock %}
+

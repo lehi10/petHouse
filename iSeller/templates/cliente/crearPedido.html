@@ -1,0 +1,23 @@
+{% extends 'cliente/pedidos.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Perfil Cliente : {{  mi_usuario.0.nombres }} 
+{% endblock %}
+{% block contentPedidos%}
+		<h3 class="text-uppercase">Crear Pedido</h3>
+			</div>
+		</div>	
+		<div class="col-md-12"  style="border-top:1px; margin-top:5px">
+			<div style="padding: 10px;" class="row">
+				 <form  method="POST" action=" ">
+						{% csrf_token %}
+                        {{ form_pedido.as_p}}
+                        <div class="text-right">
+                        <button type="submit"  class="btn btn-template-main"><i class="fa fa-user-md"></i> Guardar</button>                                 
+                        </div>
+                        </form>
+			</div>
+		</div>
+
+{% endblock%}

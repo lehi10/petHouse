@@ -1,0 +1,145 @@
+{% extends 'base/base.html' %}
+
+{% load staticfiles %}
+{% block title %}
+Perfil Proveedor: {{  mi_usuario.0.nombres }}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div id="heading-breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<h1>Mi Cuenta</h1>
+				</div>
+				<div class="col-md-5">
+					<ul class="breadcrumb">
+
+						<li><a href="index.html">Inicio</a>
+						</li>
+						<li>Mi cuenta</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+		<div class="container">
+			{% if error  %}
+			<div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						Su contraseña o su usuario son incorrectos.
+					</div>
+			
+			{% endif %}
+
+			<div class="row">
+				<div class="col-md-9">
+					<div class="box">
+							<h2 class="text-uppercase">Agregar un nuevo Producto</h2>
+							
+							
+
+							<form  method="POST" enctype="multipart/form-data" action="" data-ajax="false">
+								{% csrf_token %}
+								<div class="row">
+										<div class="col-md-6">
+												<div class="form-group">
+														<label for='{{ form_producto.nombre.label }}'>{{ form_producto.nombre.label }}</label>
+														{{ form_producto.nombre }}
+												</div>
+												
+												<div class="form-group">
+														<label for='{{ form_producto.marca.label }}'>{{ form_producto.marca.label }}</label>
+														{{ form_producto.marca }}
+												</div>
+												<div class="form-group">
+														<label for='{{ form_producto.medidas.label }}'>{{ form_producto.medidas.label }}</label>
+														{{ form_producto.medidas }}
+												</div>
+												
+												<div class="form-group">
+														<label for='{{ form_producto.stock.label }}'>{{ form_producto.stock.label }}</label>
+														{{ form_producto.stock }}
+												</div>
+												<div class="form-group">
+														<label for='{{ form_producto.tags.label }}'>{{ form_producto.tags.label }}</label>
+														{{ form_producto.tags }}
+												</div>
+												<div class="form-group">
+														<label for='{{ form_producto.categoria.label }}'>{{ form_producto.categoria.label }}</label>
+														{{ form_producto.categoria }}
+												</div>
+												<div class="form-group">
+														<label for='{{ form_producto.precioBasico.label }}'>{{ form_producto.precioBasico.label }}</label>
+														{{ form_producto.precioBasico }}
+												</div>
+										</div>
+										<div class="col-md-6">
+												
+												
+												<div class="form-group">
+														<label for='{{ form_producto.info.label }}'>{{ form_producto.info.label }}</label>
+														{{ form_producto.info }}
+												</div>
+												
+												
+												
+												<div class="form-group">
+														<label for='{{ form_producto.descripcion.label }}'>{{ form_producto.descripcion.label }}</label>
+														{{ form_producto.descripcion }}
+												</div>
+												
+												<div class="form-group ">
+														<label for='{{ form_producto.urlImagen.label }}'>{{ form_producto.urlImagen.label }}</label>
+														<div class='form-control '>
+															{{ form_producto.urlImagen }}												
+														</div>	
+												</div>
+												<div class="text-center">
+													<button type="submit" class="btn btn-template-main"><i class="fa fa-check"></i> Agregar Nuevo Producto</button>
+												</div>
+										</div>
+								</div>
+																
+							</form>
+						</div>
+				</div>
+				<div class="col-md-3">
+					<!-- *** CUSTOMER MENU ***
+_________________________________________________________ -->
+					<div class="panel panel-default sidebar-menu">
+						<div class="panel-heading">
+							<h3 class="panel-title">Customer section</h3>
+						</div>
+
+						<div class="panel-body">
+
+							<ul class="nav nav-pills nav-stacked">
+								<li ><a href="/proveedor/perfil"><i class="fa fa-briefcase"></i> Mi perfil</a></li>
+								<li class="active"><a href="/proveedor/regProducto"><i class="fa fa-edit"></i>Crear nuevo producto</a></li>
+								
+								<li><a href="/proveedor/misproductos"><i class="fa fa-list-alt"></i>Mis productos</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- *** CUSTOMER MENU END *** -->
+				</div>
+
+
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#content -->
+
+{% endblock%}
+
+

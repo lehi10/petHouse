@@ -1,0 +1,129 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title %}
+iSeller - Una Nueva Forma de comprar
+{% endblock %}
+
+{% block content%}
+
+
+	<div id="heading-breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<h2>Servicio para cuidados de mascotas</h>
+				</div>
+				<div class="col-md-5">
+					<ul class="breadcrumb">
+						<li>Inicio/</a>						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+		<div class="container">
+
+			<div class="row"></div>
+
+
+				<!-- *** LEFT COLUMN ***
+		_________________________________________________________ -->
+
+				<!-- /.col-md-3 -->
+
+				<!-- *** LEFT COLUMN END *** -->
+
+				<!-- *** RIGHT COLUMN ***-->
+
+				<div class="col-sm-12">
+					<div class="heading text-center">
+						<h2>Panel de Proveedor de Servicio</h2>
+					</div>
+					<section class="bar background-white">
+						<div class="container">
+							<div class="col-md-12">		
+								<div class="row">
+									<a href="proveedor/perfil">
+										<div class="col-md-4">
+											<div class="box-simple">
+												<div class="icon">
+													<i class="fa fa-user"></i>
+												</div>
+												<h3>Mi Perfil</h3>
+											</div>
+										</div>
+									</a>
+									<a href="proveedor/misproductos">
+										<div class="col-md-4">
+											<div class="box-simple">
+												<div class="icon">
+													<i class="fa fa-list"></i>
+												</div>
+												<h3>Mis Servicios o Productos</h3>
+											</div>
+										</div>
+									</a>
+									<a href="proveedor/regProducto">
+										<div class="col-md-4">
+											<div class="box-simple">
+												<div class="icon">
+													<i class="fa fa-plus"></i>
+												</div>
+												<h3>Nuevo Servicio o Producto</h3>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+				<!-- /.col-md-9 -->
+
+				<!-- *** RIGHT COLUMN END *** -->
+			</div>
+			<section class="bar background-pentagon no-mb">
+				<div class="container">
+					<div class="row showcase">
+						<div class="col-md-3 col-sm-6">
+							<div class="item">
+								<div class="icon"><i class="fa fa-heart"></i>
+								</div>
+								<h4><span class="counter">580</span><br>Les gusta tus productos</h4>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="item">
+								<div class="icon"><i class="fa fa-users"></i>
+								</div>
+								<h4><span class="counter">100</span><br>Clientes Satisfechos</h4>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="item">
+								<div class="icon"><i class="fa fa-tags"></i>
+								</div>
+								<h4><span class="counter">320</span><br>Productos</h4>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="item">
+								<div class="icon"><i class="fa fa-briefcase"></i>
+								</div>
+								<h4><span class="counter">5</span><br> Intermediarios</h4>
+							</div>
+						</div>
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container -->
+			</section>
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#content -->
+
+
+{%endblock%}

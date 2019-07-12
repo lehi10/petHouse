@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+ 
+
+
+        <div id="heading-breadcrumbs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>Registrarse </h1>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="breadcrumb">
+                            <li><a href="index.html">Home</a>
+                            </li>
+                            <li>Registrarse</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+                <div class="container">
+                    {% if error  %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        Su contraseña o su usuario son incorrectos.
+                    </div>
+                    {% endif %}
+                    <form  method="POST" action=" ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="box">
+                                    <h2 class="text-uppercase">Registro para Proveedores</h2>
+                                    {% csrf_token %}
+                                    <h3>Datos de Usuario</h3>
+                                    {{ form_usuario.as_p }}                                            
+                                </div>
+                            </div>
+        
+                            <div class="col-md-6">
+                                <div class="box">
+                                    {% csrf_token %}
+                                    <h3>Datos de la Empresa</h3>
+                                    {{ form_proveedor.as_p }}
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i> Registrarse</button>
+                            </div>
+                        </form> 
+                        <hr>
+                        </div>
+                           
+                    <!-- /.row -->
+    
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /#content -->
+
+
+{% endblock %}
+
